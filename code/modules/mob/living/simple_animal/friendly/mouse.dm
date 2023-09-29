@@ -208,6 +208,17 @@
 	icon_state = "mouse_brown"
 	tts_seed = "Clockwerk"
 
+//RATGE
+/mob/living/simple_animal/mouse/green
+	mouse_color = "green"
+	tts_seed = "Meepo"
+	gold_core_spawnable = NO_SPAWN
+	icon_state = "mouse_green"
+	icon_living = "mouse_green"
+	icon_dead = "mouse_green_dead"
+	icon_resting = "mouse_green_sleep"
+	desc = "Ratge."
+
 //TOM IS ALIVE! SQUEEEEEEEE~K :)
 /mob/living/simple_animal/mouse/brown/Tom
 	name = "Tom"
