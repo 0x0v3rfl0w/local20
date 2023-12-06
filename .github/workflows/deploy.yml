@@ -17,6 +17,7 @@ jobs:
 
       - name: Install dependencies and build
         run: |
+          export NODE_OPTIONS=--openssl-legacy-provider
           cd ./tgui
           yarn install
           yarn run build
