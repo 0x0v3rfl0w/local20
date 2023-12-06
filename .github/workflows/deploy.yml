@@ -61,6 +61,20 @@ jobs:
           passphrase: ${{ secrets.PRODUCTION_SSH_KEY_PASS }}
           script: /var/lib/byond/update_isp_lists.sh
 
+  build-tgui:
+    name: Build TGUI js
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies and build
+        run: |
+          cd ./tgui
+          yarn install
+          yarn run build
+
   set-matrix:
     name: Set Deployment Matrix
     runs-on: ubuntu-latest
@@ -101,7 +115,7 @@ jobs:
       fail-fast: false
       matrix: ${{fromJson(needs.set-matrix.outputs.matrix)}}
     environment: ${{ matrix.environment }}
-    needs: [update-isp-lists, CI, set-matrix]
+    needs: [update-isp-lists, CI, build-tgui, set-matrix]
     if: always() && !cancelled() && !failure()
 
     steps:
